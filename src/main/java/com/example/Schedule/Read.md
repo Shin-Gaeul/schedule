@@ -31,23 +31,23 @@
   "request": {
     "method": "GET",
     "url": {
-      "raw": "http://localhost:8080/schedules?author=홍길동&updated_at=2024-12-10",
-      "protocol": "http",
-      "host": ["localhost"],
-      "port": "8080",
-      "path": ["schedules"],
-      "query": [
-        {
-          "key": "author",
-          "value": "홍길동",
-          "disabled": false
-        },
-        {
-          "key": "updated_at",
-          "value": "2024-12-10",
-          "disabled": false
-        }
-      ]
+"raw": "http://localhost:8080/schedules?author=홍길동&updated_at=2024-12-10",
+"protocol": "http",
+"host": ["localhost"],
+"port": "8080",
+"path": ["schedules"],
+"query": [
+{
+"key": "author",
+"value": "홍길동",
+ "disabled": false
+},
+{
+ "key": "updated_at",
+"value": "2024-12-10",
+"disabled": false
+}
+]
     }
   }
 }
