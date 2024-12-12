@@ -4,6 +4,8 @@ import com.example.Schedule.Schedule;
 import com.example.Schedule.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ScheduleService {
@@ -22,8 +24,15 @@ public class ScheduleService {
         scheduleRepository.update(schedule, password);
     }
 
-    // 일정 삭제
+
     public void deleteSchedule(int id, String password) {
         scheduleRepository.delete(id, password);
+    }
+    public List<Schedule> getAllSchedules(String author, LocalDateTime updatedAfter) {
+        return scheduleRepository.findAll(author, updatedAfter);
+    }
+
+    public Schedule getScheduleById(int id) {
+        return scheduleRepository.findById(id);
     }
 }
