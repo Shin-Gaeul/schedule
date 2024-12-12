@@ -27,7 +27,8 @@
 			},
 			"response": []
 		},
-		{
+
+{
 			"name": "Get All Schedules",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -68,7 +69,9 @@
 			},
 			"response": []
 		},
-		{
+		
+  
+  {
 			"name": "Get Schedule By ID",
 			"request": {
 				"method": "GET",
@@ -94,7 +97,9 @@
 			},
 			"response": []
 		},
-		{
+		
+  
+  {
 			"name": "Update Schedule",
 			"request": {
 				"method": "PUT",
@@ -135,7 +140,9 @@
 			},
 			"response": []
 		},
-		{
+		
+  
+  {
 			"name": "Delete Schedule",
 			"request": {
 				"method": "DELETE",
@@ -177,9 +184,9 @@
 		}
 	]
 }
-2. erd
+1. erd
 
-3. read.md
+2. read.md
 ## 🛠 기술 스택
 - **Framework**: Spring Boot
 - **Database**: MySQL
