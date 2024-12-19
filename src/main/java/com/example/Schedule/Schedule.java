@@ -1,30 +1,49 @@
 package com.example.Schedule;
 
+
 import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import com.example.User.User;
 
+
+
+@Entity
+@Table(name = "schedule")
 public class Schedule {
-    private int id; // 고유 식별자
-    private String todo; // 할일
-    private String author; // 작성자명
-    private String password; // 비밀번호
-    private LocalDateTime createdAt; // 작성일
-    private LocalDateTime updatedAt; // 수정일
 
-    // 기본 생성자
-    public Schedule() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String todo;
+    private String content; // 할일 내용 추가
+    private String author;
+    private String password;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    // Getters and Setters
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user; // User 엔티티와 연관관계
+
+    private int userId;
+
+    // Getter와 Setter
+    public User getUser() {
+        return user;
     }
 
-    // 모든 필드를 포함한 생성자 (선택사항)
-    public Schedule(int id, String todo, String author, String password, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.todo = todo;
-        this.author = author;
-        this.password = password;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    // Getter 및 Setter
     public int getId() {
         return id;
     }
@@ -39,6 +58,14 @@ public class Schedule {
 
     public void setTodo(String todo) {
         this.todo = todo;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getAuthor() {
@@ -73,3 +100,4 @@ public class Schedule {
         this.updatedAt = updatedAt;
     }
 }
+

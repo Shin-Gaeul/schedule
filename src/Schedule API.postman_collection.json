@@ -1,42 +1,38 @@
 {
 	"info": {
-		"_postman_id": "f763783f-c131-4464-b73c-02b07834eb89",
-		"name": "Schedule API",
+		"_postman_id": "db4bd816-b87c-4d3a-8a3f-2c0b9ea605d8",
+		"name": "Schedule2 API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "40220243",
-		"_collection_link": "https://report1.postman.co/workspace/report1-Workspace~44017a58-83d3-4c67-84e8-1eac2adae83c/collection/40220243-f763783f-c131-4464-b73c-02b07834eb89?action=share&source=collection_link&creator=40220243"
+		"_collection_link": "https://report1.postman.co/workspace/report1-Workspace~44017a58-83d3-4c67-84e8-1eac2adae83c/collection/40220243-db4bd816-b87c-4d3a-8a3f-2c0b9ea605d8?action=share&source=collection_link&creator=40220243"
 	},
 	"item": [
 		{
-			"name": "Create Schedule",
+			"name": "login",
 			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/schedules",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"schedules"
-					]
-				}
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		},
 		{
-			"name": "Get All Schedules",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "Create Schedule",
 			"request": {
-				"method": "GET",
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\n  \"todo\": \"Buy groceries\",\n  \"content\": \"Milk, bread, eggs\",\n  \"author\": \"user@example.com\",\n  \"password\": \"password123\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -44,24 +40,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/schedules?author&updated_at",
+					"raw": "http://localhost:8080/schedule",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"schedules"
-					],
-					"query": [
-						{
-							"key": "author",
-							"value": null
-						},
-						{
-							"key": "updated_at",
-							"value": null
-						}
+						"schedule"
 					]
 				}
 			},
@@ -71,36 +57,28 @@
 			"name": "Get Schedule By ID",
 			"request": {
 				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/schedules/:id",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"schedules",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				}
+				"header": []
 			},
 			"response": []
 		},
 		{
 			"name": "Update Schedule",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"todo\": \"수정된 할일\",\n    \"author\": \"홍길동\"\n}\n",
+					"raw": "{\n  \"todo\": \"Buy groceries\",\n  \"content\": \"Milk, bread, eggs, butter\",\n  \"author\": \"user@example.com\",\n  \"password\": \"password123\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -108,27 +86,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/schedules/:id?password= 일정 수정 권한 확인 비밀번호",
+					"raw": "http://localhost:8080/schedule/{id}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"schedules",
-						":id"
-					],
-					"query": [
-						{
-							"key": "password",
-							"value": " 일정 수정 권한 확인 비밀번호"
-						}
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "수정할 일정 ID"
-						}
+						"schedule",
+						"{id}"
 					]
 				}
 			},
@@ -137,40 +103,39 @@
 		{
 			"name": "Delete Schedule",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"password\": \"password123\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8080/schedules/:id?password=일정 삭제 권한 확인 비밀번호",
+					"raw": "http://localhost:8080/schedule/{id}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"schedules",
-						":id"
-					],
-					"query": [
-						{
-							"key": "password",
-							"value": "일정 삭제 권한 확인 비밀번호"
-						}
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "삭제할 일정 ID"
-						}
+						"schedule",
+						"{id}"
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": []
 			},
 			"response": []
 		}
